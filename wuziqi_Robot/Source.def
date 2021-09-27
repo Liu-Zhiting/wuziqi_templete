@@ -1,0 +1,6 @@
+LIBRARY
+EXPORTS
+	GetNextMove = _GetNextMove@8
+	Reset = _Reset@0
+	SetColor = _SetColor@4
+	SetLevel = _SetLevel@4
