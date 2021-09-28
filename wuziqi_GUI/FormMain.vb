@@ -447,6 +447,71 @@
 
     Private Event GameOver(state As JudgeState)
 
+    Private Sub PVP玩家玩家ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PVP玩家玩家ToolStripMenuItem.Click
+        If Not PVP玩家玩家ToolStripMenuItem.Checked Then
+            PVP玩家玩家ToolStripMenuItem.Checked = True
+            PVE玩家机器人ToolStripMenuItem.Checked = False
+            EVE机器人机器人ToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Private Sub PVE玩家机器人ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PVE玩家机器人ToolStripMenuItem.Click
+        If Not PVE玩家机器人ToolStripMenuItem.Checked Then
+            PVP玩家玩家ToolStripMenuItem.Checked = False
+            PVE玩家机器人ToolStripMenuItem.Checked = True
+            EVE机器人机器人ToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Private Sub EVE机器人机器人ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EVE机器人机器人ToolStripMenuItem.Click
+        If Not EVE机器人机器人ToolStripMenuItem.Checked Then
+            PVP玩家玩家ToolStripMenuItem.Checked = False
+            PVE玩家机器人ToolStripMenuItem.Checked = False
+            EVE机器人机器人ToolStripMenuItem.Checked = True
+        End If
+    End Sub
+
+    Private Sub RobotAdll执黑ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RobotAdll执黑ToolStripMenuItem.Click
+        If Not RobotAdll执黑ToolStripMenuItem.Checked Then
+            RobotAdll执黑ToolStripMenuItem.Checked = True
+            RobotBdll执黑ToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Private Sub RobotBdll执黑ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RobotBdll执黑ToolStripMenuItem.Click
+        If Not RobotBdll执黑ToolStripMenuItem.Checked Then
+            RobotAdll执黑ToolStripMenuItem.Checked = False
+            RobotBdll执黑ToolStripMenuItem.Checked = True
+        End If
+    End Sub
+
+    Private Sub RobotAdll为对手ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RobotAdll为对手ToolStripMenuItem.Click
+        If Not RobotAdll为对手ToolStripMenuItem.Checked Then
+            RobotAdll为对手ToolStripMenuItem.Checked = True
+            RobotBdll为对手ToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Private Sub RobotBdll为对手ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RobotBdll为对手ToolStripMenuItem.Click
+        If Not RobotBdll为对手ToolStripMenuItem.Checked Then
+            RobotAdll为对手ToolStripMenuItem.Checked = False
+            RobotBdll为对手ToolStripMenuItem.Checked = True
+        End If
+    End Sub
+
+    Private Sub 玩家执黑ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 玩家执黑ToolStripMenuItem.Click
+        If Not 玩家执黑ToolStripMenuItem.Checked Then
+            玩家执黑ToolStripMenuItem.Checked = True
+            机器人执黑ToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Private Sub 机器人执黑ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 机器人执黑ToolStripMenuItem.Click
+        If Not 机器人执黑ToolStripMenuItem.Checked Then
+            玩家执黑ToolStripMenuItem.Checked = False
+            机器人执黑ToolStripMenuItem.Checked = True
+        End If
+    End Sub
 End Class
 Enum GameMode
     PVP
