@@ -71,7 +71,7 @@
             Case GameMode.PVP
 
             Case GameMode.PVE
-                If RdiPVEBlackPlayer.Checked Xor CurrentPlayerColor = PlayerColor.Black Then
+                If 玩家执黑ToolStripMenuItem.Checked Xor CurrentPlayerColor = PlayerColor.Black Then
                     MyRobotController.PerformMove()
                 End If
             Case GameMode.EVE
@@ -122,32 +122,35 @@
 
     Private Sub SetUIEnableState(gameStart As Boolean)
         If gameStart Then
-            If Not (RdiModePVP.Checked Or RdiModePVE.Checked Or RdiModeEVE.Checked) Then
+            If Not (PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked Or EVE机器人机器人ToolStripMenuItem.Checked) Then
                 Throw New Exception("没有选中游戏模式")
                 Exit Sub
             End If
 
             PanelChessBoard.Enabled = True
 
-            GroupGlobalSetting.Enabled = False
-            GpBoxPVPSet.Enabled = False
-            GpBoxPVESet.Enabled = False
-            GpBoxEVESet.Enabled = False
+            'GroupGlobalSetting.Enabled = False
+            'GpBoxPVPSet.Enabled = False
+            'GpBoxPVESet.Enabled = False
+            'GpBoxEVESet.Enabled = False
+            设置ToolStripMenuItem.Enabled = False
+
 
             BtnStart.Enabled = False
-            BtnGiveUp.Enabled = RdiModePVP.Checked Or RdiModePVE.Checked
-            BtnTip.Enabled = RdiModePVP.Checked Or RdiModePVE.Checked
-            BtnUndo.Enabled = RdiModePVP.Checked Or RdiModePVE.Checked
-            BtnPause.Enabled = RdiModeEVE.Checked
-            BtnStopEVE.Enabled = RdiModeEVE.Checked
+            BtnGiveUp.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            BtnTip.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            BtnUndo.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            BtnPause.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
+            BtnStopEVE.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
 
         Else
             PanelChessBoard.Enabled = False
 
-            GroupGlobalSetting.Enabled = True
-            GpBoxPVPSet.Enabled = RdiModePVP.Checked
-            GpBoxPVESet.Enabled = RdiModePVE.Checked
-            GpBoxEVESet.Enabled = RdiModeEVE.Checked
+            'GroupGlobalSetting.Enabled = True
+            'GpBoxPVPSet.Enabled = PVP玩家玩家ToolStripMenuItem.Checked
+            'GpBoxPVESet.Enabled = PVE玩家机器人ToolStripMenuItem.Checked
+            'GpBoxEVESet.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
+            设置ToolStripMenuItem.Enabled = True
 
             BtnStart.Enabled = True
             BtnGiveUp.Enabled = False
@@ -176,30 +179,30 @@
         SetRobotRelevantUI(Robot.A, A_Exist)
         SetRobotRelevantUI(Robot.B, B_Exist)
 
-        RdiModePVE.Enabled = A_Exist Or B_Exist
-        RdiModeEVE.Enabled = A_Exist And B_Exist
+        PVE玩家机器人ToolStripMenuItem.Enabled = A_Exist Or B_Exist
+        EVE机器人机器人ToolStripMenuItem.Enabled = A_Exist And B_Exist
 
-        If (Not A_Exist) And B_Exist Then RdiPVERobotB.Checked = True
+        If (Not A_Exist) And B_Exist Then RobotBdll为对手ToolStripMenuItem.Checked = True
 
-        Return Not (RdiModePVE.Checked And LblIsAExist.Text = "缺失" And LblIsBExist.Text = "缺失") Or RdiModeEVE.Checked And (LblIsAExist.Text = "缺失" Or LblIsBExist.Text = "缺失")
+        Return Not (PVE玩家机器人ToolStripMenuItem.Checked And ToolLabelIsAExist.Text = "缺失" And ToolLabelIsBExist.Text = "缺失") Or EVE机器人机器人ToolStripMenuItem.Checked And (ToolLabelIsAExist.Text = "缺失" Or ToolLabelIsBExist.Text = "缺失")
 
     End Function
 
     Private Sub SetRobotRelevantUI(index As Robot, state As Boolean)
         Select Case index
             Case 0  'Robot A
-                TxtRobotNameA.Enabled = state : TxtRobotLevelA.Enabled = state : RdiPVERobotA.Enabled = state
+                TxtRobotNameA.Enabled = state : ToolTxtRobotLevelA.Enabled = state : RobotAdll为对手ToolStripMenuItem.Enabled = state
                 If state Then
-                    LblIsAExist.Text = "就绪"
+                    ToolLabelIsAExist.Text = "就绪"
                 Else
-                    LblIsAExist.Text = "缺失"
+                    ToolLabelIsAExist.Text = "缺失"
                 End If
             Case 1   'Robot B
-                TxtRobotNameB.Enabled = state : TxtRobotLevelB.Enabled = state : RdiPVERobotB.Enabled = state
+                TxtRobotNameB.Enabled = state : ToolTxtRobotLevelB.Enabled = state : RobotBdll为对手ToolStripMenuItem.Enabled = state
                 If state Then
-                    LblIsBExist.Text = "就绪"
+                    ToolLabelIsBExist.Text = "就绪"
                 Else
-                    LblIsBExist.Text = "缺失"
+                    ToolLabelIsBExist.Text = "缺失"
                 End If
         End Select
     End Sub
@@ -209,29 +212,31 @@
         Dim PVERobotColor As PlayerColor = GetPVERobotColor()
         Dim PVERobotLevel As Integer
 
-        If RdiModePVE.Checked Then
+        If PVE玩家机器人ToolStripMenuItem.Checked Then
             If PVERobotIndex = Robot.A Then
-                PVERobotLevel = TxtRobotLevelA.Text
+                PVERobotLevel = ToolTxtRobotLevelA.Text
             Else
-                PVERobotLevel = TxtRobotLevelB.Text
+                PVERobotLevel = ToolTxtRobotLevelB.Text
             End If
 
             MyRobotController.Mode = GameMode.PVE
             MyRobotController.Reset(PVERobotIndex)
             MyRobotController.SetColor(PVERobotIndex, PVERobotColor)
             MyRobotController.SetLevel(PVERobotIndex, PVERobotLevel)
-            If RdiPVEBlackRobot.Checked Then MyRobotController.PerformMove(PVERobotIndex)
-        ElseIf RdiModeEVE.Checked Then
+            If 机器人执黑ToolStripMenuItem.Checked Then
+                MyRobotController.PerformMove(PVERobotIndex)
+            End If
+        ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
             MyRobotController.Mode = GameMode.EVE
             MyRobotController.Reset(Robot.A)
             MyRobotController.Reset(Robot.B)
-            MyRobotController.SetLevel(Robot.A, TxtRobotLevelA.Text)
-            MyRobotController.SetLevel(Robot.B, TxtRobotLevelB.Text)
+            MyRobotController.SetLevel(Robot.A, ToolTxtRobotLevelA.Text)
+            MyRobotController.SetLevel(Robot.B, ToolTxtRobotLevelB.Text)
 
-            If RdiEVEBlackA.Checked Then
+            If RobotAdll执黑ToolStripMenuItem.Checked Then
                 MyRobotController.SetColor(Robot.A, PlayerColor.Black)
                 MyRobotController.SetColor(Robot.B, PlayerColor.White)
-            ElseIf RdiEVEBlackB.Checked Then
+            ElseIf RobotBdll执黑ToolStripMenuItem.Checked Then
                 MyRobotController.SetColor(Robot.B, PlayerColor.Black)
                 MyRobotController.SetColor(Robot.A, PlayerColor.White)
             End If
@@ -244,35 +249,35 @@
         Dim PVERobotIndex As Robot = GetPVERobotIndex()
         Dim PVERobotColor As PlayerColor = GetPVERobotColor()
 
-        If RdiModePVP.Checked Then
-            LblPlayBlack.Text = TxtPVPBlackName.Text
-            LblPlayWhite.Text = TxtPVPWhiteName.Text
-        ElseIf RdiModePVE.Checked Then
-            If RdiPVEBlackPlayer.Checked Then
-                LblPlayBlack.Text = TxtPVPBlackName.Text
+        If PVP玩家玩家ToolStripMenuItem.Checked Then
+            ToolLabelPlayBlack.Text = ToolTxtPVPBlackName.Text
+            ToolLabelPlayWhite.Text = ToolTxtPVPWhiteName.Text
+        ElseIf PVE玩家机器人ToolStripMenuItem.Checked Then
+            If 玩家执黑ToolStripMenuItem.Checked Then
+                ToolLabelPlayBlack.Text = ToolTxtPVEPlayerName.Text
                 If PVERobotIndex = Robot.A Then
-                    LblPlayWhite.Text = TxtRobotNameA.Text
+                    ToolLabelPlayWhite.Text = TxtRobotNameA.Text
                 Else
-                    LblPlayWhite.Text = TxtRobotNameB.Text
+                    ToolLabelPlayWhite.Text = TxtRobotNameB.Text
                 End If
             Else
-                LblPlayWhite.Text = TxtPVPWhiteName.Text
+                ToolLabelPlayWhite.Text = ToolTxtPVPWhiteName.Text
                 If PVERobotIndex = Robot.A Then
-                    LblPlayBlack.Text = TxtRobotNameA.Text
+                    ToolLabelPlayBlack.Text = TxtRobotNameA.Text
                 Else
-                    LblPlayBlack.Text = TxtRobotNameB.Text
+                    ToolLabelPlayBlack.Text = TxtRobotNameB.Text
                 End If
             End If
-        ElseIf RdiModeEVE.Checked Then
-            LblPlayBlack.Text = TxtRobotNameA.Text
-            LblPlayWhite.Text = TxtRobotNameB.Text
+        ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
+            ToolLabelPlayBlack.Text = TxtRobotNameA.Text
+            ToolLabelPlayWhite.Text = TxtRobotNameB.Text
         End If
     End Sub
 
     Private Function GetPVERobotIndex() As PlayerColor
         Dim robotIndex As Robot
 
-        If RdiPVERobotA.Checked Then
+        If RobotAdll为对手ToolStripMenuItem.Checked Then
             robotIndex = Robot.A
         Else
             robotIndex = Robot.B
@@ -284,7 +289,7 @@
     Private Function GetPVERobotColor() As PlayerColor
         Dim robotColor As PlayerColor
 
-        If RdiPVEBlackPlayer.Checked Then
+        If 玩家执黑ToolStripMenuItem.Checked Then
             robotColor = PlayerColor.White
         Else
             robotColor = PlayerColor.Black
@@ -302,6 +307,8 @@
 
 #Region "控件方法"
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ToolLabelResponseTime.Text = ""
+
         'set window size
         Me.Height = My.Computer.Screen.WorkingArea.Height * 0.75
         Me.Width = My.Computer.Screen.WorkingArea.Width * 0.75
@@ -321,7 +328,7 @@
 
     Private Sub BtnStart_Click(sender As Object, e As EventArgs) Handles BtnStart.Click
         'TODO 修复机器人对战功能
-        If RdiModeEVE.Checked Then
+        If EVE机器人机器人ToolStripMenuItem.Checked Then
             MessageBox.Show("十分抱歉，功能异常，正在修复中，敬请期待")
             Exit Sub
         End If
@@ -341,54 +348,30 @@
 
         'set robot
         InitializeMyRobotController()
-        If RdiModePVE.Checked Then
-            If RdiPVEBlackRobot.Checked Then MyRobotController.PerformMove(GetPVERobotIndex())
-        ElseIf RdiModeEVE.Checked Then
+        If PVE玩家机器人ToolStripMenuItem.Checked Then
+            If 机器人执黑ToolStripMenuItem.Checked Then MyRobotController.PerformMove(GetPVERobotIndex())
+        ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
             MyRobotController.PerformMove(Robot.A)
         End If
 
     End Sub
 
-    Private Sub RdiModePVP_CheckedChanged(sender As Object, e As EventArgs) Handles RdiModePVP.CheckedChanged
-        If RdiModePVP.Checked Then
-            GpBoxPVPSet.Enabled = True
-            GpBoxPVESet.Enabled = False
-            GpBoxEVESet.Enabled = False
-        End If
-    End Sub
-
-    Private Sub RdiModePVE_CheckedChanged(sender As Object, e As EventArgs) Handles RdiModePVE.CheckedChanged
-        If RdiModePVE.Checked Then
-            GpBoxPVPSet.Enabled = False
-            GpBoxPVESet.Enabled = True
-            GpBoxEVESet.Enabled = False
-        End If
-    End Sub
-
-    Private Sub RdiModeEVE_CheckedChanged(sender As Object, e As EventArgs) Handles RdiModeEVE.CheckedChanged
-        If RdiModeEVE.Checked Then
-            GpBoxPVPSet.Enabled = False
-            GpBoxPVESet.Enabled = False
-            GpBoxEVESet.Enabled = True
-        End If
-    End Sub
-
     Private Sub BtnPVPExchangeColor_Click(sender As Object, e As EventArgs) Handles BtnPVPExchangeColor.Click
-        Dim s As String = TxtPVPBlackName.Text
-        TxtPVPBlackName.Text = TxtPVPWhiteName.Text
-        TxtPVPWhiteName.Text = s
+        Dim s As String = ToolTxtPVPBlackName.Text
+        ToolTxtPVPBlackName.Text = ToolTxtPVPWhiteName.Text
+        ToolTxtPVPWhiteName.Text = s
     End Sub
 
     Private Sub BtnGiveUp_Click(sender As Object, e As EventArgs) Handles BtnGiveUp.Click
         Dim state As JudgeState
-        If RdiModePVP.Checked Then
+        If PVP玩家玩家ToolStripMenuItem.Checked Then
             If MoveCounter Mod 2 = 1 Then
                 state = JudgeState.WhiteWin
             Else
                 state = JudgeState.BlackWin
             End If
-        ElseIf RdiModePVE.Checked Then
-            If RdiPVEBlackPlayer.Checked Then
+        ElseIf PVE玩家机器人ToolStripMenuItem.Checked Then
+            If 玩家执黑ToolStripMenuItem.Checked Then
                 state = JudgeState.WhiteWin
             Else
                 state = JudgeState.BlackWin
@@ -443,6 +426,7 @@
 
     Public Sub ShowResponseTime(seconds As Double)
         LblResponseTime.Text = String.Format("响应时间：{0:n2}s", seconds)
+        ToolLabelResponseTime.Text = String.Format("响应时间：{0:n2}s", seconds)
     End Sub
 
     Private Event GameOver(state As JudgeState)
@@ -511,6 +495,96 @@
             玩家执黑ToolStripMenuItem.Checked = False
             机器人执黑ToolStripMenuItem.Checked = True
         End If
+    End Sub
+
+    Private Sub 退出游戏ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出游戏ToolStripMenuItem.Click
+        If MessageBox.Show("确定要退出吗？", "提示", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub 开始ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 开始ToolStripMenuItem.Click
+        'TODO 修复机器人对战功能
+        If EVE机器人机器人ToolStripMenuItem.Checked Then
+            MessageBox.Show("十分抱歉，功能异常，正在修复中，敬请期待")
+            Exit Sub
+        End If
+
+        'check robot
+        Dim IsRobotAvaliable As Boolean = UpdateRobotState()
+        If Not IsRobotAvaliable Then
+            MessageBox.Show("没有可用的robot")
+            Exit Sub
+        End If
+
+        'init UI
+        ClearBoard()
+        MyRobotController.ClearBoard()
+        SetUIEnableState(gameStart:=True)
+        ShowPlayerName()
+
+        'set robot
+        InitializeMyRobotController()
+        If PVE玩家机器人ToolStripMenuItem.Checked Then
+            If 机器人执黑ToolStripMenuItem.Checked Then MyRobotController.PerformMove(GetPVERobotIndex())
+        ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
+            MyRobotController.PerformMove(Robot.A)
+        End If
+    End Sub
+
+    Private Sub 认输ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 认输ToolStripMenuItem.Click
+        Dim state As JudgeState
+        If PVP玩家玩家ToolStripMenuItem.Checked Then
+            If MoveCounter Mod 2 = 1 Then
+                state = JudgeState.WhiteWin
+            Else
+                state = JudgeState.BlackWin
+            End If
+        ElseIf PVE玩家机器人ToolStripMenuItem.Checked Then
+            If 玩家执黑ToolStripMenuItem.Checked Then
+                state = JudgeState.WhiteWin
+            Else
+                state = JudgeState.BlackWin
+            End If
+        Else
+            Exit Sub
+        End If
+        RaiseEvent GameOver(state)
+    End Sub
+
+    Private Sub 悔棋ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 悔棋ToolStripMenuItem.Click
+        MessageBox.Show("功能暂未开放，敬请期待！")
+        Exit Sub
+    End Sub
+
+    Private Sub 提示ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 提示ToolStripMenuItem.Click
+        MessageBox.Show("功能暂未开放，敬请期待！")
+        Exit Sub
+    End Sub
+
+    Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
+        MessageBox.Show("功能暂未开放，敬请期待！")
+        Exit Sub
+        If 暂停ToolStripMenuItem.Text = "暂停" Then
+
+
+            暂停ToolStripMenuItem.Text = "继续"
+        Else
+
+
+
+            暂停ToolStripMenuItem.Text = "暂停"
+        End If
+    End Sub
+
+    Private Sub 停止EVEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止EVEToolStripMenuItem.Click
+        ClearBoard()
+        PanelChessBoard.Enabled = False
+        GroupGlobalSetting.Enabled = True
+
+        BtnStart.Enabled = True
+        BtnPause.Enabled = False
+        BtnStopEVE.Enabled = False
     End Sub
 End Class
 Enum GameMode
