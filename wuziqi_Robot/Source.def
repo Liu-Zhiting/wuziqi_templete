@@ -4,3 +4,4 @@ EXPORTS
 	Reset = _Reset@0
 	SetColor = _SetColor@4
 	SetLevel = _SetLevel@4
+	GetName = _GetName@4

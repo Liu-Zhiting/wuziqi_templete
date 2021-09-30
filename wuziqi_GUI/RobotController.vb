@@ -1,14 +1,17 @@
 ﻿Class RobotController
+    Private Const ROBOT_NAME_LEN As Integer = 50
 
     Public Declare Function NextMoveA Lib "RobotA.dll" Alias "GetNextMove" (ByRef map As Integer, ByVal move As Integer) As Integer
     Public Declare Sub ResetA Lib "RobotA.dll" Alias "Reset" ()
     Public Declare Sub SetColorA Lib "RobotA.dll" Alias "SetColor" (ByVal playerColor As Integer)
     Public Declare Sub SetLevelA Lib "RobotA.dll" Alias "SetLevel" (ByVal level As Integer)
+    Public Declare Sub GetNameA Lib "RobotA.dll" Alias "GetName" (ByRef name As Byte)
 
     Public Declare Function NextMoveB Lib "RobotB.dll" Alias "GetNextMove" (ByRef map As Integer, ByVal move As Integer) As Integer
     Public Declare Sub ResetB Lib "RobotB.dll" Alias "Reset" ()
     Public Declare Sub SetColorB Lib "RobotB.dll" Alias "SetColor" (ByVal playerColor As Integer)
     Public Declare Sub SetLevelB Lib "RobotB.dll" Alias "SetLevel" (ByVal level As Integer)
+    Public Declare Sub GetNameB Lib "RobotB.dll" Alias "GetName" (ByRef name As Byte)
 
     Public Property Mode As GameMode = GameMode.PVE
     Public Property CurrentBoard As Integer()
@@ -80,10 +83,32 @@
         End Select
     End Sub
 
+    Public Function GetRobotName(robotIndex As Robot) As String
+        Dim result As String
+        Dim buf(ROBOT_NAME_LEN) As Byte
+
+        If robotIndex = Robot.A Then
+            GetNameA(buf(0))
+        Else
+            GetNameB(buf(0))
+        End If
+
+        'buf 后面有一串0，需要截断
+        For i = 0 To buf.Length - 1
+            If buf(i) = 0 Then
+                ReDim Preserve buf(i)
+                Exit For
+            End If
+        Next
+
+        result = Text.Encoding.UTF8.GetString(buf)
+        Return result
+    End Function
+
 
     Private Sub RobotControler_OnMove(robotIndex As Robot) Handles Me.OnMove
         Dim index As Integer
-        Dim t1, t2 As DateTime
+        Dim t1, t2 As Date
         Dim dt As TimeSpan
 
         t1 = Now

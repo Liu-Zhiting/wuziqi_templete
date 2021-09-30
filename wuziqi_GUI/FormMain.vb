@@ -191,14 +191,16 @@
     Private Sub SetRobotRelevantUI(index As Robot, state As Boolean)
         Select Case index
             Case 0  'Robot A
-                TxtRobotNameA.Enabled = state : ToolTxtRobotLevelA.Enabled = state : RobotAdll为对手ToolStripMenuItem.Enabled = state
+                ToolTxtRobotLevelA.Enabled = state
+                RobotAdll为对手ToolStripMenuItem.Enabled = state
                 If state Then
                     ToolLabelIsAExist.Text = "就绪"
                 Else
                     ToolLabelIsAExist.Text = "缺失"
                 End If
             Case 1   'Robot B
-                TxtRobotNameB.Enabled = state : ToolTxtRobotLevelB.Enabled = state : RobotBdll为对手ToolStripMenuItem.Enabled = state
+                ToolTxtRobotLevelB.Enabled = state
+                RobotBdll为对手ToolStripMenuItem.Enabled = state
                 If state Then
                     ToolLabelIsBExist.Text = "就绪"
                 Else
@@ -249,28 +251,23 @@
         Dim PVERobotIndex As Robot = GetPVERobotIndex()
         Dim PVERobotColor As PlayerColor = GetPVERobotColor()
 
+
+
+
         If PVP玩家玩家ToolStripMenuItem.Checked Then
             ToolLabelPlayBlack.Text = ToolTxtPVPBlackName.Text
             ToolLabelPlayWhite.Text = ToolTxtPVPWhiteName.Text
         ElseIf PVE玩家机器人ToolStripMenuItem.Checked Then
             If 玩家执黑ToolStripMenuItem.Checked Then
                 ToolLabelPlayBlack.Text = ToolTxtPVEPlayerName.Text
-                If PVERobotIndex = Robot.A Then
-                    ToolLabelPlayWhite.Text = TxtRobotNameA.Text
-                Else
-                    ToolLabelPlayWhite.Text = TxtRobotNameB.Text
-                End If
+                ToolLabelPlayWhite.Text = MyRobotController.GetRobotName(PVERobotIndex)
             Else
                 ToolLabelPlayWhite.Text = ToolTxtPVPWhiteName.Text
-                If PVERobotIndex = Robot.A Then
-                    ToolLabelPlayBlack.Text = TxtRobotNameA.Text
-                Else
-                    ToolLabelPlayBlack.Text = TxtRobotNameB.Text
-                End If
+                ToolLabelPlayBlack.Text = MyRobotController.GetRobotName(PVERobotIndex)
             End If
         ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
-            ToolLabelPlayBlack.Text = TxtRobotNameA.Text
-            ToolLabelPlayWhite.Text = TxtRobotNameB.Text
+            ToolLabelPlayBlack.Text = MyRobotController.GetRobotName(Robot.A)
+            ToolLabelPlayWhite.Text = MyRobotController.GetRobotName(Robot.B)
         End If
     End Sub
 

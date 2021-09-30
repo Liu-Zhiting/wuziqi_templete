@@ -812,53 +812,53 @@ Partial Class FormMain
         '开始ToolStripMenuItem
         '
         Me.开始ToolStripMenuItem.Name = "开始ToolStripMenuItem"
-        Me.开始ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.开始ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.开始ToolStripMenuItem.Text = "开始"
         '
         '认输ToolStripMenuItem
         '
         Me.认输ToolStripMenuItem.Enabled = False
         Me.认输ToolStripMenuItem.Name = "认输ToolStripMenuItem"
-        Me.认输ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.认输ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.认输ToolStripMenuItem.Text = "认输"
         '
         '悔棋ToolStripMenuItem
         '
         Me.悔棋ToolStripMenuItem.Enabled = False
         Me.悔棋ToolStripMenuItem.Name = "悔棋ToolStripMenuItem"
-        Me.悔棋ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.悔棋ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.悔棋ToolStripMenuItem.Text = "悔棋"
         '
         '提示ToolStripMenuItem
         '
         Me.提示ToolStripMenuItem.Enabled = False
         Me.提示ToolStripMenuItem.Name = "提示ToolStripMenuItem"
-        Me.提示ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.提示ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.提示ToolStripMenuItem.Text = "提示"
         '
         '暂停ToolStripMenuItem
         '
         Me.暂停ToolStripMenuItem.Enabled = False
         Me.暂停ToolStripMenuItem.Name = "暂停ToolStripMenuItem"
-        Me.暂停ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.暂停ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.暂停ToolStripMenuItem.Text = "暂停"
         '
         '停止EVEToolStripMenuItem
         '
         Me.停止EVEToolStripMenuItem.Enabled = False
         Me.停止EVEToolStripMenuItem.Name = "停止EVEToolStripMenuItem"
-        Me.停止EVEToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.停止EVEToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.停止EVEToolStripMenuItem.Text = "停止EVE"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(121, 6)
         '
         '退出游戏ToolStripMenuItem
         '
         Me.退出游戏ToolStripMenuItem.Name = "退出游戏ToolStripMenuItem"
-        Me.退出游戏ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.退出游戏ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.退出游戏ToolStripMenuItem.Text = "退出游戏"
         '
         '设置ToolStripMenuItem
@@ -941,7 +941,7 @@ Partial Class FormMain
         '黑方玩家姓名ToolStripMenuItem
         '
         Me.黑方玩家姓名ToolStripMenuItem.Name = "黑方玩家姓名ToolStripMenuItem"
-        Me.黑方玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.黑方玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.黑方玩家姓名ToolStripMenuItem.Text = "黑方玩家姓名："
         '
         'ToolTxtPVPBlackName
@@ -953,7 +953,7 @@ Partial Class FormMain
         '白方玩家姓名ToolStripMenuItem
         '
         Me.白方玩家姓名ToolStripMenuItem.Name = "白方玩家姓名ToolStripMenuItem"
-        Me.白方玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.白方玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.白方玩家姓名ToolStripMenuItem.Text = "白方玩家姓名："
         '
         'ToolTxtPVPWhiteName
@@ -972,7 +972,7 @@ Partial Class FormMain
         '玩家姓名ToolStripMenuItem
         '
         Me.玩家姓名ToolStripMenuItem.Name = "玩家姓名ToolStripMenuItem"
-        Me.玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.玩家姓名ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.玩家姓名ToolStripMenuItem.Text = "玩家姓名："
         '
         'ToolTxtPVEPlayerName
@@ -984,39 +984,39 @@ Partial Class FormMain
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(174, 6)
         '
         'RobotAdll为对手ToolStripMenuItem
         '
         Me.RobotAdll为对手ToolStripMenuItem.Checked = True
         Me.RobotAdll为对手ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.RobotAdll为对手ToolStripMenuItem.Name = "RobotAdll为对手ToolStripMenuItem"
-        Me.RobotAdll为对手ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RobotAdll为对手ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.RobotAdll为对手ToolStripMenuItem.Text = "RobotA.dll 为对手"
         '
         'RobotBdll为对手ToolStripMenuItem
         '
         Me.RobotBdll为对手ToolStripMenuItem.Name = "RobotBdll为对手ToolStripMenuItem"
-        Me.RobotBdll为对手ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RobotBdll为对手ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.RobotBdll为对手ToolStripMenuItem.Text = "RobotB.dll 为对手"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(174, 6)
         '
         '玩家执黑ToolStripMenuItem
         '
         Me.玩家执黑ToolStripMenuItem.Checked = True
         Me.玩家执黑ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.玩家执黑ToolStripMenuItem.Name = "玩家执黑ToolStripMenuItem"
-        Me.玩家执黑ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.玩家执黑ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.玩家执黑ToolStripMenuItem.Text = "玩家执黑"
         '
         '机器人执黑ToolStripMenuItem
         '
         Me.机器人执黑ToolStripMenuItem.Name = "机器人执黑ToolStripMenuItem"
-        Me.机器人执黑ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.机器人执黑ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.机器人执黑ToolStripMenuItem.Text = "机器人执黑"
         '
         'EVE设置ToolStripMenuItem
@@ -1031,13 +1031,13 @@ Partial Class FormMain
         Me.RobotAdll执黑ToolStripMenuItem.Checked = True
         Me.RobotAdll执黑ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.RobotAdll执黑ToolStripMenuItem.Name = "RobotAdll执黑ToolStripMenuItem"
-        Me.RobotAdll执黑ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RobotAdll执黑ToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.RobotAdll执黑ToolStripMenuItem.Text = "RobotA.dll 执黑"
         '
         'RobotBdll执黑ToolStripMenuItem
         '
         Me.RobotBdll执黑ToolStripMenuItem.Name = "RobotBdll执黑ToolStripMenuItem"
-        Me.RobotBdll执黑ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RobotBdll执黑ToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.RobotBdll执黑ToolStripMenuItem.Text = "RobotB.dll 执黑"
         '
         '帮助ToolStripMenuItem
