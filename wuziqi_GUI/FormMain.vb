@@ -1,6 +1,7 @@
 ﻿Public Class FormMain
     'global and const
-
+    Private Const CAPTION_H As Integer = 20
+    Private Const BOARD_MERGIN As Integer = 50
     Private Property CurrentPlayerColor As PlayerColor = PlayerColor.Black
     Private Property Last_i As Integer = -1
     Private Property MoveCounter As Integer = 1
@@ -13,17 +14,15 @@
 
 #Region "自定义private方法"
     Private Sub InitializeChessboard()
-        Const CAPTION_H As Integer = 45
-        Dim board_mergin As Integer = 50
         Dim block_size As Integer
         Dim block_mergin As Integer
         Dim tmp As MyButton
 
         PanelChessBoard.BackColor = Color.LightGray
-        PanelChessBoard.Top = board_mergin
-        PanelChessBoard.Left = PanelChessBoard.Top
-        PanelChessBoard.Height = Me.Height - CAPTION_H - 2 * board_mergin
+        PanelChessBoard.Height = Me.Height - CAPTION_H - 2 * BOARD_MERGIN
         PanelChessBoard.Width = PanelChessBoard.Height
+        PanelChessBoard.Left = BOARD_MERGIN
+        PanelChessBoard.Top = PanelChessBoard.Left - CAPTION_H
 
         block_mergin = PanelChessBoard.Height * 0.0632
         block_size = (PanelChessBoard.Height - 2 * block_mergin) / 15
@@ -298,7 +297,6 @@
 
         'set window size
         Me.Height = My.Computer.Screen.WorkingArea.Height * 0.75
-        'Me.Width = My.Computer.Screen.WorkingArea.Width * 0.75
         Me.Width = Me.Height
 
         'lock window size
@@ -321,7 +319,7 @@
     End Sub
 
     Public Sub ShowResponseTime(seconds As Double)
-        ToolLabelResponseTime.Text = String.Format("响应时间：{0:n2}s", seconds)
+        ToolLabelResponseTime.Text = String.Format("{0:n2}s", seconds)
     End Sub
 
     Private Event GameOver(state As JudgeState)
@@ -481,6 +479,8 @@
         暂停ToolStripMenuItem.Enabled = False
         停止EVEToolStripMenuItem.Enabled = False
     End Sub
+
+
 End Class
 Enum GameMode
     PVP

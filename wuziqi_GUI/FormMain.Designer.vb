@@ -24,10 +24,6 @@ Partial Class FormMain
     Private Sub InitializeComponent()
         Me.PanelChessBoard = New System.Windows.Forms.Panel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel10 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolLabelIsAExist = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel8 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolLabelIsBExist = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolLabelPlayBlack = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -50,6 +46,7 @@ Partial Class FormMain
         Me.PVE玩家机器人ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EVE机器人机器人ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.机器人设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RobotAdll难度ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTxtRobotLevelA = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -76,6 +73,9 @@ Partial Class FormMain
         Me.查看帮助ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.关于ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolLabelIsAExist = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolLabelIsBExist = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -85,46 +85,22 @@ Partial Class FormMain
         Me.PanelChessBoard.BackgroundImage = Global.wuziqi_GUI.My.Resources.chessboard.board
         Me.PanelChessBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PanelChessBoard.Enabled = False
-        Me.PanelChessBoard.Location = New System.Drawing.Point(50, 50)
+        Me.PanelChessBoard.Location = New System.Drawing.Point(50, 30)
         Me.PanelChessBoard.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PanelChessBoard.Name = "PanelChessBoard"
-        Me.PanelChessBoard.Size = New System.Drawing.Size(397, 390)
+        Me.PanelChessBoard.Size = New System.Drawing.Size(450, 450)
         Me.PanelChessBoard.TabIndex = 0
         '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel10, Me.ToolLabelIsAExist, Me.ToolStripStatusLabel8, Me.ToolLabelIsBExist, Me.ToolStripStatusLabel1, Me.ToolLabelPlayBlack, Me.ToolStripStatusLabel3, Me.ToolLabelPlayWhite, Me.ToolStripStatusLabel5, Me.ToolLabelResponseTime})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolLabelPlayBlack, Me.ToolStripStatusLabel3, Me.ToolLabelPlayWhite, Me.ToolStripStatusLabel5, Me.ToolLabelResponseTime})
         Me.StatusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 486)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 509)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(506, 44)
+        Me.StatusStrip1.Size = New System.Drawing.Size(554, 22)
         Me.StatusStrip1.TabIndex = 8
         Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel10
-        '
-        Me.ToolStripStatusLabel10.Name = "ToolStripStatusLabel10"
-        Me.ToolStripStatusLabel10.Size = New System.Drawing.Size(105, 17)
-        Me.ToolStripStatusLabel10.Text = "RobotA.dll状态："
-        '
-        'ToolLabelIsAExist
-        '
-        Me.ToolLabelIsAExist.Name = "ToolLabelIsAExist"
-        Me.ToolLabelIsAExist.Size = New System.Drawing.Size(29, 17)
-        Me.ToolLabelIsAExist.Text = "abc"
-        '
-        'ToolStripStatusLabel8
-        '
-        Me.ToolStripStatusLabel8.Name = "ToolStripStatusLabel8"
-        Me.ToolStripStatusLabel8.Size = New System.Drawing.Size(105, 17)
-        Me.ToolStripStatusLabel8.Text = "RobotB.dll状态："
-        '
-        'ToolLabelIsBExist
-        '
-        Me.ToolLabelIsBExist.Name = "ToolLabelIsBExist"
-        Me.ToolLabelIsBExist.Size = New System.Drawing.Size(33, 17)
-        Me.ToolLabelIsBExist.Text = " abc"
         '
         'ToolStripStatusLabel1
         '
@@ -168,7 +144,7 @@ Partial Class FormMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.操作ToolStripMenuItem, Me.设置ToolStripMenuItem, Me.帮助ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(506, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(554, 25)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -182,53 +158,53 @@ Partial Class FormMain
         '开始ToolStripMenuItem
         '
         Me.开始ToolStripMenuItem.Name = "开始ToolStripMenuItem"
-        Me.开始ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.开始ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.开始ToolStripMenuItem.Text = "开始"
         '
         '认输ToolStripMenuItem
         '
         Me.认输ToolStripMenuItem.Enabled = False
         Me.认输ToolStripMenuItem.Name = "认输ToolStripMenuItem"
-        Me.认输ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.认输ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.认输ToolStripMenuItem.Text = "认输"
         '
         '悔棋ToolStripMenuItem
         '
         Me.悔棋ToolStripMenuItem.Enabled = False
         Me.悔棋ToolStripMenuItem.Name = "悔棋ToolStripMenuItem"
-        Me.悔棋ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.悔棋ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.悔棋ToolStripMenuItem.Text = "悔棋"
         '
         '提示ToolStripMenuItem
         '
         Me.提示ToolStripMenuItem.Enabled = False
         Me.提示ToolStripMenuItem.Name = "提示ToolStripMenuItem"
-        Me.提示ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.提示ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.提示ToolStripMenuItem.Text = "提示"
         '
         '暂停ToolStripMenuItem
         '
         Me.暂停ToolStripMenuItem.Enabled = False
         Me.暂停ToolStripMenuItem.Name = "暂停ToolStripMenuItem"
-        Me.暂停ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.暂停ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.暂停ToolStripMenuItem.Text = "暂停"
         '
         '停止EVEToolStripMenuItem
         '
         Me.停止EVEToolStripMenuItem.Enabled = False
         Me.停止EVEToolStripMenuItem.Name = "停止EVEToolStripMenuItem"
-        Me.停止EVEToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.停止EVEToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.停止EVEToolStripMenuItem.Text = "停止EVE"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(121, 6)
         '
         '退出游戏ToolStripMenuItem
         '
         Me.退出游戏ToolStripMenuItem.Name = "退出游戏ToolStripMenuItem"
-        Me.退出游戏ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.退出游戏ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.退出游戏ToolStripMenuItem.Text = "退出游戏"
         '
         '设置ToolStripMenuItem
@@ -242,7 +218,7 @@ Partial Class FormMain
         '
         Me.全局设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PVP玩家玩家ToolStripMenuItem, Me.PVE玩家机器人ToolStripMenuItem, Me.EVE机器人机器人ToolStripMenuItem})
         Me.全局设置ToolStripMenuItem.Name = "全局设置ToolStripMenuItem"
-        Me.全局设置ToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.全局设置ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.全局设置ToolStripMenuItem.Text = "全局设置"
         '
         'PVP玩家玩家ToolStripMenuItem
@@ -267,15 +243,21 @@ Partial Class FormMain
         '
         '机器人设置ToolStripMenuItem
         '
-        Me.机器人设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RobotAdll难度ToolStripMenuItem, Me.ToolTxtRobotLevelA, Me.ToolStripSeparator3, Me.RobotBdll难度ToolStripMenuItem, Me.ToolTxtRobotLevelB})
+        Me.机器人设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolLabelIsAExist, Me.RobotAdll难度ToolStripMenuItem, Me.ToolTxtRobotLevelA, Me.ToolStripSeparator3, Me.ToolStripMenuItem3, Me.ToolLabelIsBExist, Me.RobotBdll难度ToolStripMenuItem, Me.ToolTxtRobotLevelB})
         Me.机器人设置ToolStripMenuItem.Name = "机器人设置ToolStripMenuItem"
         Me.机器人设置ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.机器人设置ToolStripMenuItem.Text = "机器人设置"
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(181, 22)
+        Me.ToolStripMenuItem1.Text = "RobotA.dll 状态："
+        '
         'RobotAdll难度ToolStripMenuItem
         '
         Me.RobotAdll难度ToolStripMenuItem.Name = "RobotAdll难度ToolStripMenuItem"
-        Me.RobotAdll难度ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.RobotAdll难度ToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.RobotAdll难度ToolStripMenuItem.Text = "RobotA.dll 难度："
         '
         'ToolTxtRobotLevelA
@@ -287,12 +269,12 @@ Partial Class FormMain
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(178, 6)
         '
         'RobotBdll难度ToolStripMenuItem
         '
         Me.RobotBdll难度ToolStripMenuItem.Name = "RobotBdll难度ToolStripMenuItem"
-        Me.RobotBdll难度ToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.RobotBdll难度ToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.RobotBdll难度ToolStripMenuItem.Text = "RobotB.dll 难度："
         '
         'ToolTxtRobotLevelB
@@ -305,7 +287,7 @@ Partial Class FormMain
         '
         Me.PVP设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.黑方玩家姓名ToolStripMenuItem, Me.ToolTxtPVPBlackName, Me.白方玩家姓名ToolStripMenuItem, Me.ToolTxtPVPWhiteName})
         Me.PVP设置ToolStripMenuItem.Name = "PVP设置ToolStripMenuItem"
-        Me.PVP设置ToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.PVP设置ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PVP设置ToolStripMenuItem.Text = "PVP设置"
         '
         '黑方玩家姓名ToolStripMenuItem
@@ -336,7 +318,7 @@ Partial Class FormMain
         '
         Me.PVE设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.玩家姓名ToolStripMenuItem, Me.ToolTxtPVEPlayerName, Me.ToolStripSeparator1, Me.RobotAdll为对手ToolStripMenuItem, Me.RobotBdll为对手ToolStripMenuItem, Me.ToolStripSeparator5, Me.玩家执黑ToolStripMenuItem, Me.机器人执黑ToolStripMenuItem})
         Me.PVE设置ToolStripMenuItem.Name = "PVE设置ToolStripMenuItem"
-        Me.PVE设置ToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.PVE设置ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PVE设置ToolStripMenuItem.Text = "PVE设置"
         '
         '玩家姓名ToolStripMenuItem
@@ -393,7 +375,7 @@ Partial Class FormMain
         '
         Me.EVE设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RobotAdll执黑ToolStripMenuItem, Me.RobotBdll执黑ToolStripMenuItem})
         Me.EVE设置ToolStripMenuItem.Name = "EVE设置ToolStripMenuItem"
-        Me.EVE设置ToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.EVE设置ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.EVE设置ToolStripMenuItem.Text = "EVE设置"
         '
         'RobotAdll执黑ToolStripMenuItem
@@ -434,12 +416,30 @@ Partial Class FormMain
         Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
+        'ToolLabelIsAExist
+        '
+        Me.ToolLabelIsAExist.Name = "ToolLabelIsAExist"
+        Me.ToolLabelIsAExist.Size = New System.Drawing.Size(181, 22)
+        Me.ToolLabelIsAExist.Text = "???"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(181, 22)
+        Me.ToolStripMenuItem3.Text = "RobotB.dll 状态： "
+        '
+        'ToolLabelIsBExist
+        '
+        Me.ToolLabelIsBExist.Name = "ToolLabelIsBExist"
+        Me.ToolLabelIsBExist.Size = New System.Drawing.Size(181, 22)
+        Me.ToolLabelIsBExist.Text = "???"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(506, 530)
+        Me.ClientSize = New System.Drawing.Size(554, 531)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.PanelChessBoard)
@@ -483,10 +483,6 @@ Partial Class FormMain
     Friend WithEvents PVP设置ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PVE设置ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EVE设置ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripStatusLabel10 As ToolStripStatusLabel
-    Friend WithEvents ToolLabelIsAExist As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel8 As ToolStripStatusLabel
-    Friend WithEvents ToolLabelIsBExist As ToolStripStatusLabel
     Friend WithEvents 黑方玩家姓名ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTxtPVPBlackName As ToolStripTextBox
     Friend WithEvents 白方玩家姓名ToolStripMenuItem As ToolStripMenuItem
@@ -500,7 +496,6 @@ Partial Class FormMain
     Friend WithEvents 查看帮助ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents 关于ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RobotAdll难度ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTxtRobotLevelA As ToolStripTextBox
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents RobotBdll难度ToolStripMenuItem As ToolStripMenuItem
@@ -512,4 +507,9 @@ Partial Class FormMain
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents 玩家执黑ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 机器人执黑ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents RobotAdll难度ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolLabelIsAExist As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents ToolLabelIsBExist As ToolStripMenuItem
 End Class
