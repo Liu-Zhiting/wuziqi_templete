@@ -128,36 +128,26 @@
             End If
 
             PanelChessBoard.Enabled = True
-
-            'GroupGlobalSetting.Enabled = False
-            'GpBoxPVPSet.Enabled = False
-            'GpBoxPVESet.Enabled = False
-            'GpBoxEVESet.Enabled = False
             设置ToolStripMenuItem.Enabled = False
 
 
-            BtnStart.Enabled = False
-            BtnGiveUp.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
-            BtnTip.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
-            BtnUndo.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
-            BtnPause.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
-            BtnStopEVE.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
+            开始ToolStripMenuItem.Enabled = False
+            认输ToolStripMenuItem.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            提示ToolStripMenuItem.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            悔棋ToolStripMenuItem.Enabled = PVP玩家玩家ToolStripMenuItem.Checked Or PVE玩家机器人ToolStripMenuItem.Checked
+            暂停ToolStripMenuItem.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
+            停止EVEToolStripMenuItem.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
 
         Else
             PanelChessBoard.Enabled = False
-
-            'GroupGlobalSetting.Enabled = True
-            'GpBoxPVPSet.Enabled = PVP玩家玩家ToolStripMenuItem.Checked
-            'GpBoxPVESet.Enabled = PVE玩家机器人ToolStripMenuItem.Checked
-            'GpBoxEVESet.Enabled = EVE机器人机器人ToolStripMenuItem.Checked
             设置ToolStripMenuItem.Enabled = True
 
-            BtnStart.Enabled = True
-            BtnGiveUp.Enabled = False
-            BtnTip.Enabled = False
-            BtnUndo.Enabled = False
-            BtnPause.Enabled = False
-            BtnStopEVE.Enabled = False
+            开始ToolStripMenuItem.Enabled = True
+            认输ToolStripMenuItem.Enabled = False
+            提示ToolStripMenuItem.Enabled = False
+            悔棋ToolStripMenuItem.Enabled = False
+            暂停ToolStripMenuItem.Enabled = False
+            停止EVEToolStripMenuItem.Enabled = False
         End If
 
     End Sub
@@ -308,7 +298,8 @@
 
         'set window size
         Me.Height = My.Computer.Screen.WorkingArea.Height * 0.75
-        Me.Width = My.Computer.Screen.WorkingArea.Width * 0.75
+        'Me.Width = My.Computer.Screen.WorkingArea.Width * 0.75
+        Me.Width = Me.Height
 
         'lock window size
         Me.MaximumSize = Me.Size
@@ -323,98 +314,6 @@
 
     End Sub
 
-    Private Sub BtnStart_Click(sender As Object, e As EventArgs) Handles BtnStart.Click
-        'TODO 修复机器人对战功能
-        If EVE机器人机器人ToolStripMenuItem.Checked Then
-            MessageBox.Show("十分抱歉，功能异常，正在修复中，敬请期待")
-            Exit Sub
-        End If
-
-        'check robot
-        Dim IsRobotAvaliable As Boolean = UpdateRobotState()
-        If Not IsRobotAvaliable Then
-            MessageBox.Show("没有可用的robot")
-            Exit Sub
-        End If
-
-        'init UI
-        ClearBoard()
-        MyRobotController.ClearBoard()
-        SetUIEnableState(gameStart:=True)
-        ShowPlayerName()
-
-        'set robot
-        InitializeMyRobotController()
-        If PVE玩家机器人ToolStripMenuItem.Checked Then
-            If 机器人执黑ToolStripMenuItem.Checked Then MyRobotController.PerformMove(GetPVERobotIndex())
-        ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
-            MyRobotController.PerformMove(Robot.A)
-        End If
-
-    End Sub
-
-    Private Sub BtnPVPExchangeColor_Click(sender As Object, e As EventArgs) Handles BtnPVPExchangeColor.Click
-        Dim s As String = ToolTxtPVPBlackName.Text
-        ToolTxtPVPBlackName.Text = ToolTxtPVPWhiteName.Text
-        ToolTxtPVPWhiteName.Text = s
-    End Sub
-
-    Private Sub BtnGiveUp_Click(sender As Object, e As EventArgs) Handles BtnGiveUp.Click
-        Dim state As JudgeState
-        If PVP玩家玩家ToolStripMenuItem.Checked Then
-            If MoveCounter Mod 2 = 1 Then
-                state = JudgeState.WhiteWin
-            Else
-                state = JudgeState.BlackWin
-            End If
-        ElseIf PVE玩家机器人ToolStripMenuItem.Checked Then
-            If 玩家执黑ToolStripMenuItem.Checked Then
-                state = JudgeState.WhiteWin
-            Else
-                state = JudgeState.BlackWin
-            End If
-        Else
-            Exit Sub
-        End If
-        RaiseEvent GameOver(state)
-    End Sub
-
-    Private Sub BtnPause_Click(sender As Object, e As EventArgs) Handles BtnPause.Click
-        MessageBox.Show("功能暂未开放，敬请期待！")
-        Exit Sub
-        If BtnPause.Text = "暂停" Then
-
-
-            BtnPause.Text = "继续"
-        Else
-
-
-
-            BtnPause.Text = "暂停"
-        End If
-    End Sub
-
-    Private Sub BtnStopEVE_Click(sender As Object, e As EventArgs) Handles BtnStopEVE.Click
-        ClearBoard()
-        PanelChessBoard.Enabled = False
-        GroupGlobalSetting.Enabled = True
-
-        BtnStart.Enabled = True
-        BtnPause.Enabled = False
-        BtnStopEVE.Enabled = False
-
-
-    End Sub
-
-    Private Sub BtnUndo_Click(sender As Object, e As EventArgs) Handles BtnUndo.Click
-        MessageBox.Show("功能暂未开放，敬请期待！")
-        Exit Sub
-    End Sub
-
-    Private Sub BtnTip_Click(sender As Object, e As EventArgs) Handles BtnTip.Click
-        MessageBox.Show("功能暂未开放，敬请期待！")
-        Exit Sub
-    End Sub
 #End Region
 
     Public Sub RobotClick(index As Integer)
@@ -422,7 +321,6 @@
     End Sub
 
     Public Sub ShowResponseTime(seconds As Double)
-        LblResponseTime.Text = String.Format("响应时间：{0:n2}s", seconds)
         ToolLabelResponseTime.Text = String.Format("响应时间：{0:n2}s", seconds)
     End Sub
 
@@ -577,11 +475,11 @@
     Private Sub 停止EVEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止EVEToolStripMenuItem.Click
         ClearBoard()
         PanelChessBoard.Enabled = False
-        GroupGlobalSetting.Enabled = True
+        'GroupGlobalSetting.Enabled = True
 
-        BtnStart.Enabled = True
-        BtnPause.Enabled = False
-        BtnStopEVE.Enabled = False
+        操作ToolStripMenuItem.Enabled = True
+        暂停ToolStripMenuItem.Enabled = False
+        停止EVEToolStripMenuItem.Enabled = False
     End Sub
 End Class
 Enum GameMode
