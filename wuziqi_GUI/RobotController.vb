@@ -182,12 +182,12 @@
             For l = 0 To len - 5
                 Dim s As Boolean = True
                 For k = 0 To 3
-                    s = s And (CurrentBoard(start + 16 * k) = CurrentBoard(start + 16 * (k + 1)))
+                    s = s And (CurrentBoard(start + 16 * (l + k)) = CurrentBoard(start + 16 * (l + k + 1)))
                 Next
                 If s Then
-                    If CurrentBoard(start) = ChessColor.White Then
+                    If CurrentBoard(start + 16 * l) = ChessColor.White Then
                         Return JudgeState.WhiteWin
-                    ElseIf CurrentBoard(start) = ChessColor.Black Then
+                    ElseIf CurrentBoard(start + 16 * l) = ChessColor.Black Then
                         Return JudgeState.BlackWin
                     End If
                 End If
@@ -203,12 +203,12 @@
             For l = 0 To len - 5
                 Dim s As Boolean = True
                 For k = 0 To 3
-                    s = s And (CurrentBoard(start + 14 * k) = CurrentBoard(start + 14 * (k + 1)))
+                    s = s And (CurrentBoard(start + 14 * (l + k)) = CurrentBoard(start + 14 * (l + k + 1)))
                 Next
                 If s Then
-                    If CurrentBoard(start) = ChessColor.White Then
+                    If CurrentBoard(start + 14 * l) = ChessColor.White Then
                         Return JudgeState.WhiteWin
-                    ElseIf CurrentBoard(start) = ChessColor.Black Then
+                    ElseIf CurrentBoard(start + 14 * l) = ChessColor.Black Then
                         Return JudgeState.BlackWin
                     End If
                 End If
