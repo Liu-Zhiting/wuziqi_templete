@@ -169,9 +169,14 @@
         SetRobotRelevantUI(Robot.B, B_Exist)
 
         PVE玩家机器人ToolStripMenuItem.Enabled = A_Exist Or B_Exist
-        EVE机器人机器人ToolStripMenuItem.Enabled = A_Exist And B_Exist
+        PVE设置ToolStripMenuItem.Enabled = A_Exist Or B_Exist
 
-        If (Not A_Exist) And B_Exist Then RobotBdll为对手ToolStripMenuItem.Checked = True
+        EVE机器人机器人ToolStripMenuItem.Enabled = A_Exist And B_Exist
+        EVE设置ToolStripMenuItem.Enabled = A_Exist And B_Exist
+
+        If (Not A_Exist) And B_Exist Then
+            RobotBdll为对手ToolStripMenuItem.Checked = True
+        End If
 
         Return Not (PVE玩家机器人ToolStripMenuItem.Checked And ToolLabelIsAExist.Text = "缺失" And ToolLabelIsBExist.Text = "缺失") Or EVE机器人机器人ToolStripMenuItem.Checked And (ToolLabelIsAExist.Text = "缺失" Or ToolLabelIsBExist.Text = "缺失")
 
