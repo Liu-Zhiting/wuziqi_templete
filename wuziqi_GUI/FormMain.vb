@@ -247,9 +247,6 @@
         Dim PVERobotIndex As Robot = GetPVERobotIndex()
         Dim PVERobotColor As PlayerColor = GetPVERobotColor()
 
-
-
-
         If PVP玩家玩家ToolStripMenuItem.Checked Then
             ToolLabelPlayBlack.Text = ToolTxtPVPBlackName.Text
             ToolLabelPlayWhite.Text = ToolTxtPVPWhiteName.Text
@@ -477,8 +474,25 @@
     End Sub
 
     Private Sub 提示ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 提示ToolStripMenuItem.Click
-        MessageBox.Show("功能暂未开放，敬请期待！")
-        Exit Sub
+        Dim A_Exist As Boolean = IO.File.Exists("RobotA.dll")
+        Dim B_Exist As Boolean = IO.File.Exists("RobotB.dll")
+
+        Dim position As Integer
+
+        If A_Exist Then
+            position = MyRobotController.GetHint(Robot.A)
+        ElseIf B_Exist Then
+            position = MyRobotController.GetHint(Robot.B)
+        Else
+            MessageBox.Show("没有可用的Robot！", "错误")
+            Exit Sub
+        End If
+
+        Dim i, j As Integer
+        i = (position \ 15) + 1
+        j = (position Mod 15) + 1
+        MessageBox.Show("在第" & i.ToString & "行，第" & j.ToString & "列落子", "提示")
+
     End Sub
 
     Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click

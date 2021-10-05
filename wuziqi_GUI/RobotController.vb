@@ -239,6 +239,28 @@
         RaiseEvent OnMove(CurrentRobot)
     End Sub
 
+    Overloads Function GetHint() As Integer
+        Select Case CurrentRobot
+            Case Robot.A
+                Return NextMoveA(CurrentBoard(0))
+            Case Robot.B
+                Return NextMoveB(CurrentBoard(0))
+            Case Else
+                Throw New Exception
+        End Select
+    End Function
+
+    Overloads Function GetHint(robotIndex As Robot) As Integer
+        Select Case robotIndex
+            Case Robot.A
+                Return NextMoveA(CurrentBoard(0))
+            Case Robot.B
+                Return NextMoveB(CurrentBoard(0))
+            Case Else
+                Throw New Exception
+        End Select
+    End Function
+
     Event OnMove(robotIndex As Robot)
 
 End Class
