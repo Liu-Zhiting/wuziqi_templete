@@ -4,6 +4,8 @@
     Private Const BOARD_MERGIN As Integer = 50
     Private Property CurrentPlayerColor As PlayerColor = PlayerColor.Black
     Private Property Last_i As Integer = -1
+
+    Private Property History As Stack(Of Integer)
     Private Property MoveCounter As Integer = 1
 
     Private ReadOnly imgChessBlack As Bitmap = My.Resources.chessboard.black
@@ -74,7 +76,7 @@
                     MyRobotController.PerformMove()
                 End If
             Case GameMode.EVE
-                MyRobotController.PerformMove()
+                'MyRobotController.PerformMove()
         End Select
 
         'check judge state
@@ -86,7 +88,7 @@
     End Sub
 
     Private Sub UpdateBtnBoard(i As Integer)
-        Last_i = i
+        History.Push(i)
 
         If CurrentPlayerColor = PlayerColor.Black Then
             'black chess 
@@ -114,6 +116,7 @@
                 MessageBox.Show("和棋")
         End Select
 
+        History.Clear()
         ClearBoard()
         SetUIEnableState(gameStart:=False)
 
@@ -289,6 +292,14 @@
         Return robotColor
     End Function
 
+    Private Sub TogglePlayerColor()
+        If CurrentPlayerColor = PlayerColor.Black Then
+            CurrentPlayerColor = PlayerColor.White
+        ElseIf CurrentPlayerColor = PlayerColor.White Then
+            CurrentPlayerColor = PlayerColor.Black
+        End If
+    End Sub
+
     Private ReadOnly BtnChessBoard(224) As MyButton
     Private Class MyButton
         Inherits Button
@@ -314,6 +325,10 @@
         'init robot
         UpdateRobotState()
         MyRobotController = New RobotController
+
+        'init History
+        History = New Stack(Of Integer)
+
 
     End Sub
 
@@ -424,9 +439,11 @@
         'set robot
         InitializeMyRobotController()
         If PVE玩家机器人ToolStripMenuItem.Checked Then
-            If 机器人执黑ToolStripMenuItem.Checked Then MyRobotController.PerformMove(GetPVERobotIndex())
+            If 机器人执黑ToolStripMenuItem.Checked Then
+                MyRobotController.PerformMove(GetPVERobotIndex())
+            End If
         ElseIf EVE机器人机器人ToolStripMenuItem.Checked Then
-            MyRobotController.PerformMove(Robot.A)
+            'MyRobotController.PerformMove(Robot.A)
         End If
     End Sub
 
@@ -451,8 +468,13 @@
     End Sub
 
     Private Sub 悔棋ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 悔棋ToolStripMenuItem.Click
-        MessageBox.Show("功能暂未开放，敬请期待！")
-        Exit Sub
+        Dim tmp As Integer = History.Pop()
+        BtnChessBoard(tmp).Text = ""
+        BtnChessBoard(tmp).BackgroundImage = imgChessEmpty
+        MyRobotController.CurrentBoard(tmp) = ChessColor.Empty
+        TogglePlayerColor()
+        MoveCounter -= 1
+
     End Sub
 
     Private Sub 提示ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 提示ToolStripMenuItem.Click
