@@ -63,7 +63,6 @@
         Else
             MyRobotController.CurrentBoard(i) = ChessColor.White
         End If
-        MyRobotController.CurrentMove = i
         UpdateBtnBoard(i)
         MoveCounter += 1
 

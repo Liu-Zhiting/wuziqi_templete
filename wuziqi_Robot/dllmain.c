@@ -4,7 +4,7 @@
 
 
 //
-int _stdcall GetNextMove(int map[225], int move);
+int _stdcall GetNextMove(int map[225]);
 //
 void _stdcall Reset();
 //
@@ -32,7 +32,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 
 //function
-int _stdcall GetNextMove(int map[225], int move)
+int _stdcall GetNextMove(int map[225])
 {
     return 0;
 }

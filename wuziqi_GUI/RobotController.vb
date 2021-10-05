@@ -1,13 +1,13 @@
 ﻿Class RobotController
     Private Const ROBOT_NAME_LEN As Integer = 50
 
-    Public Declare Function NextMoveA Lib "RobotA.dll" Alias "GetNextMove" (ByRef map As Integer, ByVal move As Integer) As Integer
+    Public Declare Function NextMoveA Lib "RobotA.dll" Alias "GetNextMove" (ByRef map As Integer) As Integer
     Public Declare Sub ResetA Lib "RobotA.dll" Alias "Reset" ()
     Public Declare Sub SetColorA Lib "RobotA.dll" Alias "SetColor" (ByVal playerColor As Integer)
     Public Declare Sub SetLevelA Lib "RobotA.dll" Alias "SetLevel" (ByVal level As Integer)
     Public Declare Sub GetNameA Lib "RobotA.dll" Alias "GetName" (ByRef name As Byte)
 
-    Public Declare Function NextMoveB Lib "RobotB.dll" Alias "GetNextMove" (ByRef map As Integer, ByVal move As Integer) As Integer
+    Public Declare Function NextMoveB Lib "RobotB.dll" Alias "GetNextMove" (ByRef map As Integer) As Integer
     Public Declare Sub ResetB Lib "RobotB.dll" Alias "Reset" ()
     Public Declare Sub SetColorB Lib "RobotB.dll" Alias "SetColor" (ByVal playerColor As Integer)
     Public Declare Sub SetLevelB Lib "RobotB.dll" Alias "SetLevel" (ByVal level As Integer)
@@ -114,9 +114,9 @@
         t1 = Now
         Select Case robotIndex
             Case Robot.A
-                index = NextMoveA(CurrentBoard(0), CurrentMove)
+                index = NextMoveA(CurrentBoard(0))
             Case Robot.B
-                index = NextMoveB(CurrentBoard(0), CurrentMove)
+                index = NextMoveB(CurrentBoard(0))
         End Select
         t2 = Now
         dt = t2 - t1
