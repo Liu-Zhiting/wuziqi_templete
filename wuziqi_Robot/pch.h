@@ -10,7 +10,6 @@
 
 // 添加要在此处预编译的标头
 #include "framework.h"
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "RobotHeader.h"
+
 #endif //PCH_H

@@ -7,7 +7,16 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wuziqi_GUI", "wuziqi_GUI\wu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wuziqi_Robot", "wuziqi_Robot\wuziqi_Robot.vcxproj", "{917BA4B1-3D02-43C5-A5D9-6A5AF53F02A6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wuziqi_UnitTest", "wuziqi_UnitTest\wuziqi_UnitTest.vcxproj", "{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wuziqi_Core", "wuziqi_core\wuziqi_core.vcxitems", "{808F5AE8-4767-4B76-9503-94E84565630B}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		wuziqi_core\wuziqi_core.vcxitems*{808f5ae8-4767-4b76-9503-94e84565630b}*SharedItemsImports = 9
+		wuziqi_core\wuziqi_core.vcxitems*{917ba4b1-3d02-43c5-a5d9-6a5af53f02a6}*SharedItemsImports = 4
+		wuziqi_core\wuziqi_core.vcxitems*{a8b1a9dd-40f9-4903-b535-dda4e485ab1f}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -41,6 +50,17 @@ Global
 		{917BA4B1-3D02-43C5-A5D9-6A5AF53F02A6}.Release|x64.Build.0 = Release|x64
 		{917BA4B1-3D02-43C5-A5D9-6A5AF53F02A6}.Release|x86.ActiveCfg = Release|Win32
 		{917BA4B1-3D02-43C5-A5D9-6A5AF53F02A6}.Release|x86.Build.0 = Release|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|Any CPU.Build.0 = Debug|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|x64.ActiveCfg = Debug|x64
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|x64.Build.0 = Debug|x64
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Debug|x86.Build.0 = Debug|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Release|Any CPU.ActiveCfg = Release|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Release|x64.ActiveCfg = Release|x64
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Release|x64.Build.0 = Release|x64
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Release|x86.ActiveCfg = Release|Win32
+		{A8B1A9DD-40F9-4903-B535-DDA4E485AB1F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

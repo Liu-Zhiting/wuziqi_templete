@@ -1,67 +1,90 @@
-# wuziqi2020
-五子棋AI
+# wuziqi_templete
+本项目为C语言A班各位大神设计，用于辅助完成五子棋AI实验，并提供AI之间对战的平台
 
-本项目专门用于UESTC2020-C语言A班各位大神提交作业！
+使用中如果遇到问题，可以来课程群里找我
+
+来都来了，不点个star嘛（逃
 
 ## 核心目标
-利用所学C语言技能，实现五子棋AI算法，并用自学的Visual Basic .NET 制作交互式图形界面调用C语言编译的dll，实现VB与C的通信
+- [x] 使用 visual basic 完成一个 winform GUI，令使用者可以专心实现五子棋AI算法，更快的完成实验
+- [ ] 提供AI对战平台，令使用者的作品可以与好友的作品一起友好竞技
 
-## 项目说明
+## 快速开始
 
-### wuziqi_Robot
+### 获取实验代码
 
-五子棋机器人，C语言编写的dll项目，作业的主要成分
+选择一个文件夹，打开powershell或者命令提示符，执行以下指令，以从github获取实验代码
 
-采用极大极小值搜索 + alpha-beta剪枝，运行时可自由设置搜索层数为4、6、8层
+```sh
+git clone https://github.com/SMagic-L/wuziqi_templete.git
+cd wuziqi_templete
+```
 
-4层搜索平均用时 0.2 sec，6层平均用时 1 sec，8层搜索平均用时 10 sec
+运行Visual Studio 2019，打开解决方案。
 
-为提高性能，采用了贪心评估算法缩减结点，并将评估函数返回值打表编译在dll里
+### 编写机器人代码
 
-### wuziqi_GUI
+这里我们约定，五子棋的棋盘使用长度为15*15=225的int数组来表示，第`i * 15 + j`个元素表示第 i 行第 j 列的棋子。
 
-Visual Basic .NET 编写的winform GUI，调用外置dll中的机器人
+打开wuziqi_core项目中的`RobotHeader.h`，该文件包含了玩家颜色的枚举`enum PlayerColor`以及棋盘每个格子颜色（状态）的枚举`enum ChessColor`，设置枚举的目的在于规范代码，提高可读性。
 
-可进行人人对战、人机对战、机器人对战（暂时不可用）的五子棋游戏平台
+```
+// 传入一个15*15的棋盘，返回Robot下一步落子的位置
+int _stdcall GetNextMove(int map[225]);
 
-### wuziqi_Judge
+// 重置机器人设置
+void _stdcall Reset();
 
-C语言编写的dll项目，用于判断棋局状态为【没有结束】、【黑方胜】、【白方胜】或者【和棋】
+// 设置机器人执棋颜色
+void _stdcall SetColor(int color);
 
-### wuziqi_GE_data_generator
+// 设置机器人能力等级
+void _stdcall SetLevel(int level);
 
-Visual Basic .NET 编写的控制台程序，用于对评估函数返回值打表
+// 获取机器人的名字（UTF-8字符串）
+void _stdcall GetName(char name[]);
+```
 
-### wuziqi_C_Debug
+打开wuziqi_core项目中的`main.c`，完成main.c中预留的函数。
 
-用于从项目中复制C代码并调试的项目
+`GetNextMove`与`SetColor`是机器人必需的，前者是获取机器人下一步落子位置的函数，后者是设置机器人执白棋或者执黑棋的函数。`SetLevel`是设置机器人能力等级的函数，如果你的机器人支持设置难度，可以实现它，否则可以留空。`Reset`函数可以用于重置一些全局变量。`GetName`函数用于获取你为机器人取的名字，只需要修改双引号内的文本即可，**不要去除双引号前的u8前缀**。
 
-## 下一步的工作
+**不要对函数名、参数、返回类型作任何更改**，因为它们将作为接口函数在dll中被导出，从而可以被GUI调用。
 
-### wuziqi_Robot
+如果需要添加更多的源代码文件和头文件，**请添加在wuziqi_core项目中**。wuziqi_core是一个共享项目，其他项目会引用它，然后使用其中的代码。在解决方案管理器中，右击“wuziqi_core”，选择添加项-新建项即可。
 
-- 利用启发式算法优化 alpha-beta剪枝
-- 尝试用多线程技术加快估值过程
-- 尝试用策略模式 + 工厂模式 重构 GlobalEvaluation 模块
+### 在控制台程序中调试代码
 
-### wuziqi_GUI
+打开wuziqi_UnitTest项目中的`wuziqi_UnitTest.c`文件，根据main函数中的提示，编写代码，调用GetNextMove以及其他函数。
 
-- 在GUI里添加悔棋、暂停、提示功能
-- 使用多线程技术避免界面假死
+`printMap`是用于在控制台中显示五子棋棋盘的函数，是现成的。`getTime`是用于获取当前时间的函数，可以测试机器人响应时间。我本来想把这个也实现了，考虑了一下打算留着等各位大神自己实现，权当做练习（其实是因为我懒
 
-## 暂不添加的高级功能
+```
+// 在控制台中打印15*15的棋盘
+void printMap(int map[225]);
 
-以下功能在教程中提到过或曾计划实现，但由于某些原因暂不添加至项目中。如果之后有意实现某功能，我将从本列表中移除它。
+// 获取当前时间
+double getTime();
+```
 
-- Zobrist 散列实现缓存
-- 训练 BP 神经网络以替代贪心算法做评估函数
-- 添加黑棋的“禁手”规则
-- 基于活三与冲四的“算杀” 
-- 用WPF重写GUI
-- 使用GacUI 、Ant Design、Sunny UI 等第三方UI项目重写UI
-- 另外实现基于 遗传算法 的五子棋AI
+wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此可以在wuziqi_core项目中的代码文件里设置断点，VS调试器在运行该项目生成的可执行文件`wuziqi_Robot_UnitTest.exe`时，可以正常命中断点。
 
-## 参考
+>顺便一提，我大一的时候没发现共享项目这个功能，又不会对dll进行调试，因此开了两个解决方案把代码来回粘贴
+>
+>所以我把机器人的代码全放进共享文件里帮各位大神避坑（逃
 
-- [本项目的wiki，包括我转载的俸爷转载的五子棋教程（逃](https://github.com/SMagic-L/wuziqi2020/wiki)
+编译VS解决方案，运行wuziqi_Robot_UnitTest.exe，根据运行情况对代码进行调试。
+
+### 在GUI中与你的机器人一起玩耍
+
+确认无误之后，将wuziqi_Robot.dll复制一份，并更名为RobotA.dll或者RobotB.dll。GUI 仅能识别其所在目录中的RobotA.dll或者RobotB.dll。
+
+打开wuziqi_GUI.exe，点击【设置】-【机器人设置】，查看机器人是否就绪。点击【设置】-【全局设置】-【PVE（玩家-机器人）】，然后点击【操作】-【开始】，即可开始游戏。
+
+## 注意事项
+
+- 使用 Visual Studio 编译时请将解决方案平台选择为Any CPU，否则可能会出现bug。如果运行时引发了`System.BadImageFormatException`，请考虑将该选项改为Any CPU然后重新编译。
+- 如果你看不懂wuziqi_GUI项目中的代码，那么请尽量不要修改它。
+
+
 
