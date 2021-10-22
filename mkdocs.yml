@@ -1,0 +1,17 @@
+site_name: wuziqi_templete 文档
+site_url: https://project.smagic.top/wuziqi_templete/
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - meta

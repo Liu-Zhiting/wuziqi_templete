@@ -11,6 +11,8 @@
 
 ## 快速开始
 
+这里简单介绍如何使用wuziqi_templete完成实验，有关本项目的文档，请前往[wuziqi_templete 文档](https://project.smagic.top/wuziqi_templete)查阅。
+
 ### 获取实验代码
 
 选择一个文件夹，打开powershell或者命令提示符，执行以下指令，以从github获取实验代码
@@ -67,13 +69,13 @@ void printMap(int map[225]);
 double getTime();
 ```
 
-wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此可以在wuziqi_core项目中的代码文件里设置断点，VS调试器在运行该项目生成的可执行文件`wuziqi_Robot_UnitTest.exe`时，可以正常命中断点。
+wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此可以在wuziqi_core项目中的代码文件里设置断点，VS调试器在运行该项目生成的可执行文件`wuziqi_UnitTest.exe`时，可以正常命中断点。
 
 >顺便一提，我大一的时候没发现共享项目这个功能，又不会对dll进行调试，因此开了两个解决方案把代码来回粘贴
 >
 >所以我把机器人的代码全放进共享文件里帮各位大神避坑（逃
 
-编译VS解决方案，运行wuziqi_Robot_UnitTest.exe，根据运行情况对代码进行调试。
+编译VS解决方案，运行wuziqi_UnitTest.exe，根据运行情况对代码进行调试。
 
 ### 在GUI中与你的机器人一起玩耍
 
