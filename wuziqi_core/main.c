@@ -1,10 +1,16 @@
 ﻿#include "RobotHeader.h"
 #include <string.h>
 #include <stdlib.h>
+#include <time.h> 
 
 int _stdcall GetNextMove(int map[225])
 {
-    return 0;
+    time_t t;
+    srand((unsigned)time(&t));
+    int x = rand() % 15, y = rand() % 15;
+    int pos = x * 15 + y;
+
+    return pos;
 }
 
 void _stdcall Reset()
