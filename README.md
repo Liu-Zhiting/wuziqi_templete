@@ -16,7 +16,7 @@
 选择一个文件夹，打开powershell或者命令提示符，执行以下指令，以从github获取实验代码
 
 ```sh
-git clone https://github.com/SMagic-L/wuziqi_templete.git
+git clone https://github.com/Liu-Zhiting/wuziqi_templete.git
 cd wuziqi_templete
 ```
 
