@@ -57,7 +57,7 @@ void _stdcall GetName(char name[]);
 
 打开wuziqi_UnitTest项目中的`wuziqi_UnitTest.c`文件，根据main函数中的提示，编写代码，调用GetNextMove以及其他函数。
 
-`printMap`是用于在控制台中显示五子棋棋盘的函数，是现成的。`getTime`是用于获取当前时间的函数，可以测试机器人响应时间。我本来想把这个也实现了，考虑了一下打算留着等各位大神自己实现，权当做练习（其实是因为我懒
+`printMap`是用于在控制台中显示五子棋棋盘的函数。`getTime`是用于获取当前时间的函数，可以测试机器人响应时间。
 
 ```
 // 在控制台中打印15*15的棋盘
