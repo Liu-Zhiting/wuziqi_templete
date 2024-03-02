@@ -1,9 +1,7 @@
 # wuziqi_templete
-本项目为C语言A班各位大神设计，用于辅助完成五子棋AI实验，并提供AI之间对战的平台
+本项目为电子科技大学C语言A班的各位大神设计，用于辅助完成五子棋AI实验，并提供AI之间对战的平台。
 
-使用中如果遇到问题，可以来课程群里找我
-
-来都来了，不点个star嘛（逃
+使用中如果遇到问题，请给[我](mailto:ztliu2019cs@alu.uestc.edu.cn)发送邮件。
 
 ## 核心目标
 - [x] 使用 visual basic 完成一个 winform GUI，令使用者可以专心实现五子棋AI算法，更快的完成实验
@@ -11,7 +9,7 @@
 
 ## 快速开始
 
-这里简单介绍如何使用wuziqi_templete完成实验，有关本项目的文档，请前往[wuziqi_templete 文档](https://project.smagic.top/wuziqi_templete)查阅。
+这里简单介绍如何使用wuziqi_templete完成实验，有关本项目的文档仍在建设中。
 
 ### 获取实验代码
 
@@ -73,11 +71,11 @@ wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此
 
 >顺便一提，我大一的时候没发现共享项目这个功能，又不会对dll进行调试，因此开了两个解决方案把代码来回粘贴
 >
->所以我把机器人的代码全放进共享文件里帮各位大神避坑（逃
+>所以我把机器人的代码全放进共享文件里
 
 编译VS解决方案，运行wuziqi_UnitTest.exe，根据运行情况对代码进行调试。
 
-### 在GUI中与你的机器人一起玩耍
+### 在GUI中与你的机器人对弈
 
 确认无误之后，将wuziqi_Robot.dll复制一份，并更名为RobotA.dll或者RobotB.dll。GUI 仅能识别其所在目录中的RobotA.dll或者RobotB.dll。
 
