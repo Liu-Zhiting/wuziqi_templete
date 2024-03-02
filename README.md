@@ -1,7 +1,7 @@
 # wuziqi_templete
 本项目为电子科技大学C语言A班的各位大神设计，用于辅助完成五子棋AI实验，并提供AI之间对战的平台。
 
-使用中如果遇到问题，请给[我](mailto:ztliu2019cs@alu.uestc.edu.cn)发送邮件。
+使用中如果遇到问题，请发送邮件给[我](mailto:ztliu2019cs@alu.uestc.edu.cn)，谢谢！
 
 ## 核心目标
 - [x] 使用 visual basic 完成一个 winform GUI，令使用者可以专心实现五子棋AI算法，更快的完成实验
@@ -69,10 +69,6 @@ double getTime();
 
 wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此可以在wuziqi_core项目中的代码文件里设置断点，VS调试器在运行该项目生成的可执行文件`wuziqi_UnitTest.exe`时，可以正常命中断点。
 
->顺便一提，我大一的时候没发现共享项目这个功能，又不会对dll进行调试，因此开了两个解决方案把代码来回粘贴
->
->所以我把机器人的代码全放进共享文件里
-
 编译VS解决方案，运行wuziqi_UnitTest.exe，根据运行情况对代码进行调试。
 
 ### 在GUI中与你的机器人对弈
@@ -84,7 +80,7 @@ wuziqi_core是一个共享项目，wuziqi_UnitTest引用了这个项目，因此
 ## 注意事项
 
 - 使用 Visual Studio 编译时请将解决方案平台选择为Any CPU，否则可能会出现bug。如果运行时引发了`System.BadImageFormatException`，请考虑将该选项改为Any CPU然后重新编译。
-- 如果你看不懂wuziqi_GUI项目中的代码，那么请尽量不要修改它。
+- 如果你不理解wuziqi_GUI项目中的代码，那么请尽量不要修改它。
 
 
 
